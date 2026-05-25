@@ -22,13 +22,9 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   background-attachment: fixed;
-  /* Cinematic layered background: subtle radial glows + base gray */
+  /* Solid Apple background – remove translucent radial layers here so navbar holds the glass */
   background-color: var(--apple-bg);
-  background-image:
-    radial-gradient(600px circle at 10% 10%, rgba(0,113,227,0.06), transparent 18%),
-    radial-gradient(420px circle at 85% 30%, rgba(0,113,227,0.04), transparent 20%),
-    radial-gradient(300px circle at 50% 80%, rgba(255,255,255,0.06), transparent 30%);
-  background-repeat: no-repeat;
+  background-image: none;
 }
 
 /* Glassmorphism Effect */
@@ -47,11 +43,12 @@ body {
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  /* outer nav shell should be transparent - inner .nav-pill provides the visible glass */
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .glass-button {
@@ -109,7 +106,8 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: rgba(255,255,255,0.72);
+  /* stronger translucency on the nav pill itself */
+  background: rgba(255,255,255,0.82);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--glass-strong-border);
