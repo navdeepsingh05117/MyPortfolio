@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
-import { Code2, Zap, Sparkles, Heart, Mail, Github, Linkedin, ChevronRight, Send, ArrowUpRight } from "lucide-react";
+import { Code2, Zap, Sparkles, Heart, Mail, Github, Linkedin, ChevronRight, Send, ArrowUpRight, Menu, X } from "lucide-react";
 import smartSortImg from "../assets/projects/Smart sort Visual AI.png";
 import taskFlowImg from "../assets/projects/TaskFlow.png";
 
@@ -9,6 +9,8 @@ export default function App() {
   const { scrollY } = useScroll();
   const navBlur = useTransform(scrollY, [0, 100], [0, 32]);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const navLinks = ["Work", "About", "Contact"];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f5f5f7] via-[#ffffff] to-[#fafafa]">
@@ -29,10 +31,11 @@ export default function App() {
           }}
           className="glass-nav pointer-events-auto"
         >
-          <div className="flex items-center justify-between w-full">
+          <div className="flex items-center justify-between w-full gap-3">
             <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
-            <div className="hidden md:flex items-center gap-12">
-              {["Work", "About", "Contact"].map((item) => (
+
+            <div className="hidden md:flex items-center gap-10">
+              {navLinks.map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase()}`}
@@ -43,16 +46,49 @@ export default function App() {
                 </a>
               ))}
             </div>
+
+            <button
+              type="button"
+              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/75 text-foreground shadow-sm backdrop-blur-md transition hover:bg-white"
+              onClick={() => setMobileNavOpen((open) => !open)}
+              aria-label="Toggle menu"
+              aria-expanded={mobileNavOpen}
+            >
+              {mobileNavOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </motion.nav>
+
+        {mobileNavOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.22 }}
+            className="md:hidden mx-4 mt-3 overflow-hidden rounded-[28px] border border-white/75 bg-white/90 backdrop-blur-2xl shadow-2xl"
+          >
+            <div className="flex flex-col divide-y divide-slate-200/60">
+              {navLinks.map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  onClick={() => setMobileNavOpen(false)}
+                  className="px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-slate-50"
+                >
+                  {item}
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </header>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10 pt-28 md:pt-32 pb-24">
+      <section className="min-h-[84vh] md:min-h-[92vh] flex items-center">
+        <div className="max-w-5xl mx-auto text-center relative z-10 py-24 md:py-32 px-6 sm:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xs font-medium tracking-[0.4em] text-muted-foreground mb-8 uppercase"
+            className="text-[clamp(0.65rem,3vw,0.85rem)] font-medium tracking-[0.45em] text-muted-foreground mb-8 uppercase"
           >
             Fullstack Developer & Designer
           </motion.div>
@@ -61,7 +97,7 @@ export default function App() {
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(4.5rem,16vw,9rem)] leading-[0.95] tracking-tighter font-bold text-foreground mb-6"
+            className="text-[clamp(3rem,10vw,6rem)] md:text-[clamp(4.5rem,16vw,9rem)] leading-[0.95] tracking-tighter font-bold text-foreground mb-6 sm:mb-8"
           >
             Navdeep Singh
           </motion.h1>
@@ -70,7 +106,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-light"
+            className="text-[clamp(0.98rem,2vw,1.1rem)] sm:text-[1.05rem] text-muted-foreground max-w-2xl mx-auto mb-16 leading-8 font-light"
           >
             Crafting elegant digital experiences with refined motion, premium interfaces, and modern engineering
           </motion.p>
@@ -79,13 +115,13 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-16"
           >
             <motion.a
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
               href="#work"
-              className="primary-btn text-base flex items-center"
+              className="primary-btn text-sm sm:text-base px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto justify-center"
             >
               View my work
               <ArrowUpRight className="w-4 h-4" />
@@ -94,12 +130,13 @@ export default function App() {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="secondary-btn text-base"
+              className="secondary-btn text-sm sm:text-base px-5 py-3 sm:px-6 sm:py-4 w-full sm:w-auto justify-center"
             >
               Get in touch
             </motion.a>
           </motion.div>
         </div>
+      </section>
 
       {/* Values Section */}
       <section id="about" className="py-20 px-6">
@@ -231,7 +268,7 @@ export default function App() {
             <p className="text-base text-muted-foreground">Recent work that showcases my skills and passion</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             {[
               {
                 title: "Smart Sort Visual AI",
@@ -259,11 +296,8 @@ export default function App() {
                 className="group relative block overflow-hidden rounded-[32px] shadow-[0_18px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(0,0,0,0.12)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative glass-card overflow-hidden h-full flex flex-col"
-                  style={{
-                    minHeight: '590px'
-                  }}>
-                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[32px]">
+                <div className="relative glass-card overflow-hidden h-full flex flex-col min-h-[520px] sm:min-h-[560px] lg:min-h-[590px]">
+                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[32px] h-[260px] sm:h-[300px]">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
@@ -273,7 +307,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-br from-black/6 to-transparent" />
                   </div>
 
-                  <div className="p-8 lg:p-9 flex-grow flex flex-col">
+                  <div className="p-6 sm:p-8 lg:p-9 flex-grow flex flex-col">
                     <span className="glass-badge mb-4 inline-flex text-[11px] uppercase tracking-[0.3em] letter-spacing-[0.18em]">Case Study</span>
                     <h3 className="text-2xl font-semibold text-foreground mb-2.5">{project.title}</h3>
                     <p className="text-sm font-medium text-primary mb-3">{project.tagline}</p>
