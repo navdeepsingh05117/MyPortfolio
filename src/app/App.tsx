@@ -416,7 +416,7 @@ export default function App() {
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium"
+                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium"
                       />
                     </div>
 
@@ -427,7 +427,7 @@ export default function App() {
                         placeholder="you@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium"
+                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium"
                       />
                     </div>
 
@@ -438,7 +438,7 @@ export default function App() {
                         placeholder="Tell me about your project..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium resize-none"
+                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium resize-none"
                       />
                     </div>
                   </div>
