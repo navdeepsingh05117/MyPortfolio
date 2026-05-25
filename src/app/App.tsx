@@ -416,29 +416,29 @@ export default function App() {
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 font-medium"
+                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-5">Email</label>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-6">Email</label>
                       <input
                         type="email"
                         placeholder="you@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 font-medium"
+                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-5">Message</label>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-6">Message</label>
                       <textarea
                         rows={3}
                         placeholder="Tell me about your project..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 resize-none font-medium"
+                        className="glass-input w-full px-5 py-4 rounded-[20px] text-foreground font-medium resize-none"
                       />
                     </div>
                   </div>

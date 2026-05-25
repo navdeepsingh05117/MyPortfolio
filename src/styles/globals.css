@@ -57,19 +57,49 @@ body {
   box-shadow: 0 16px 40px rgba(0, 113, 227, 0.15);
 }
 
+/* Premium Apple-Inspired Form Inputs */
 .glass-input {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 12px 32px rgba(0, 0, 0, 0.04),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.02);
   transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  color: #1d1d1f;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.glass-input::placeholder {
+  color: #8e8e93 !important;
+  font-weight: 400;
+}
+
+.glass-input:hover {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.06),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
 }
 
 .glass-input:focus {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 113, 227, 0.5);
-  box-shadow: 0 0 0 2px rgba(0, 113, 227, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(0, 113, 227, 0.4);
+  box-shadow: 
+    0 0 0 3px rgba(0, 113, 227, 0.1),
+    0 16px 48px rgba(0, 113, 227, 0.12),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.03);
   outline: none;
+  transform: translateY(-1px);
+}
+
+.glass-input:focus::placeholder {
+  color: #a1a1a6;
 }
 
 /* Gradient Animations */
