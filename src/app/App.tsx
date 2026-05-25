@@ -44,9 +44,11 @@ export default function App() {
       </motion.nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen px-6 flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen px-6 flex items-center justify-center overflow-hidden pt-8">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="absolute w-[600px] h-[400px] bg-gradient-to-b from-blue-200/20 via-blue-100/10 to-transparent blur-3xl rounded-full" />
+          <div className="absolute w-[800px] h-[600px] bg-radial-gradient from-blue-100/30 via-blue-50/10 to-transparent blur-3xl rounded-full" style={{
+            background: 'radial-gradient(circle, rgba(191,219,254,0.35) 0%, rgba(219,234,254,0.15) 40%, transparent 70%)'
+          }} />
         </div>
         
         <div className="max-w-5xl mx-auto text-center relative z-10">
@@ -54,16 +56,16 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-sm font-medium tracking-[0.3em] text-muted-foreground mb-6 uppercase"
+            className="text-xs font-medium tracking-[0.4em] text-muted-foreground mb-8 uppercase"
           >
             Fullstack Developer & Designer
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3.5rem,12vw,7rem)] leading-[1.1] tracking-tight font-semibold text-foreground mb-8"
+            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ delay: 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(4.5rem,16vw,9rem)] leading-[0.95] tracking-tighter font-bold text-foreground mb-6"
           >
             Navdeep Singh
           </motion.h1>
@@ -72,7 +74,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed font-light"
           >
             Crafting elegant digital experiences with refined motion, premium interfaces, and modern engineering
           </motion.p>
@@ -81,20 +83,25 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.98 }}
               href="#work"
-              className="px-8 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 transition-all duration-300 hover:-translate-y-1 text-base"
+              className="px-10 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/35 transition-all duration-300 text-base flex items-center gap-2"
             >
               View my work
-            </a>
-            <a
+              <ArrowUpRight className="w-4 h-4" />
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05, y: -3 }}
+              whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="px-8 py-4 bg-white/60 border border-white/80 backdrop-blur-lg text-foreground rounded-full font-semibold hover:bg-white/80 hover:shadow-md shadow-lg shadow-white/20 transition-all duration-300 hover:-translate-y-1 text-base"
+              className="px-10 py-4 bg-white/70 border border-white/90 backdrop-blur-lg text-foreground rounded-full font-semibold hover:bg-white/85 hover:border-white hover:shadow-lg shadow-lg shadow-white/10 transition-all duration-300 text-base"
             >
               Get in touch
-            </a>
+            </motion.a>
           </motion.div>
         </div>
       </section>
@@ -107,9 +114,9 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-center mb-14"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-semibold text-foreground mb-3">What I value</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">What I value</h2>
             <p className="text-base text-muted-foreground">Core principles that guide my work</p>
           </motion.div>
 
@@ -122,22 +129,25 @@ export default function App() {
             ].map((value, index) => (
               <motion.div
                 key={value.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
-                whileHover={{ y: -6 }}
+                transition={{ delay: index * 0.12, duration: 0.8 }}
+                whileHover={{ y: -8 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-white/72 backdrop-blur-[24px] border border-white/65 rounded-[28px] p-6 h-full flex flex-col items-start hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-7 h-full flex flex-col items-start hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
                   style={{
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
                   }}>
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 backdrop-blur-md border border-blue-200/50 rounded-full p-3 mb-4">
+                  <motion.div 
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="bg-gradient-to-br from-blue-50 to-blue-100/60 backdrop-blur-md border border-blue-200/60 rounded-full p-4 mb-5"
+                  >
                     <value.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{value.title}</h3>
+                  </motion.div>
+                  <h3 className="text-lg font-semibold text-foreground mb-2.5">{value.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed">{value.description}</p>
                 </div>
               </motion.div>
@@ -154,9 +164,9 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-14"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-semibold text-foreground mb-3">Services</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">Services</h2>
             <p className="text-base text-muted-foreground">How I bring products to life</p>
           </motion.div>
 
@@ -180,25 +190,29 @@ export default function App() {
             ].map((category, index) => (
               <motion.div
                 key={category.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
-                whileHover={{ y: -6 }}
+                transition={{ delay: index * 0.12, duration: 0.8 }}
+                whileHover={{ y: -8 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/15 to-transparent rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-white/72 backdrop-blur-[24px] border border-white/65 rounded-[28px] p-8 h-full flex flex-col hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/15 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-8 h-full flex flex-col hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
                   style={{
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
                   }}>
                   <h3 className="text-xl font-semibold text-foreground mb-4">{category.title}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed text-sm flex-grow">{category.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2.5">
                     {category.skills.map((skill) => (
-                      <span key={skill} className="px-3 py-1.5 bg-blue-100/60 backdrop-blur-sm border border-blue-200/50 text-xs font-semibold text-primary rounded-full">
+                      <motion.span 
+                        key={skill} 
+                        whileHover={{ scale: 1.08, y: -2 }}
+                        className="px-4 py-2 bg-gradient-to-br from-blue-50 to-blue-100/50 backdrop-blur-sm border border-blue-200/60 text-xs font-semibold text-primary rounded-full transition-all duration-300 cursor-default hover:shadow-md hover:shadow-blue-200/40"
+                      >
                         {skill}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </div>
@@ -216,9 +230,9 @@ export default function App() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-14"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-semibold text-foreground mb-3">Featured projects</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">Featured projects</h2>
             <p className="text-base text-muted-foreground">Recent work that showcases my skills and passion</p>
           </motion.div>
 
@@ -251,50 +265,65 @@ export default function App() {
             ].map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
-                transition={{ delay: index * 0.1, duration: 0.8 }}
-                whileHover={{ y: -6 }}
-                className="group relative overflow-hidden rounded-[28px]"
+                transition={{ delay: index * 0.12, duration: 0.8 }}
+                whileHover={{ y: -8 }}
+                className="group relative overflow-hidden rounded-[32px]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-white/72 backdrop-blur-[24px] border border-white/65 rounded-[28px] overflow-hidden h-full flex flex-col hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] overflow-hidden h-full flex flex-col hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
                   style={{
-                    boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
                   }}>
-                  <div className="relative h-56 bg-gradient-to-br from-blue-100/50 via-purple-100/40 to-pink-100/30 flex items-center justify-center overflow-hidden">
+                  <div className="relative h-72 bg-gradient-to-br from-blue-50/80 via-purple-50/50 to-pink-50/40 flex items-center justify-center overflow-hidden">
                     <motion.div
-                      whileHover={{ scale: 1.1 }}
+                      whileHover={{ scale: 1.15, rotate: 5 }}
                       transition={{ duration: 0.4 }}
                       className="relative"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-300/30 to-purple-300/20 rounded-[20px] blur-2xl" />
-                      <div className="relative bg-white/60 backdrop-blur-md border border-white/80 rounded-[20px] p-5"
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-[24px] blur-2xl" />
+                      <div className="relative bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-md border border-white/85 rounded-[24px] p-6"
                         style={{
-                          boxShadow: '0 8px 32px rgba(0,0,0,0.05)'
+                          boxShadow: '0 12px 40px rgba(0,0,0,0.05), inset 1px 1px 0 rgba(255,255,255,0.6)'
                         }}>
-                        <Code2 className="w-12 h-12 text-primary" />
+                        <Code2 className="w-14 h-14 text-primary" />
                       </div>
                     </motion.div>
                   </div>
                   
-                  <div className="p-8 flex-grow flex flex-col">
-                    <h3 className="text-2xl font-semibold text-foreground mb-2">{project.title}</h3>
+                  <div className="p-8 lg:p-9 flex-grow flex flex-col">
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
                     <p className="text-sm font-medium text-primary mb-3">{project.tagline}</p>
-                    <p className="text-muted-foreground mb-6 text-sm leading-relaxed flex-grow">{project.description}</p>
+                    <p className="text-muted-foreground mb-7 text-sm leading-relaxed flex-grow">{project.description}</p>
                     
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap gap-2.5 mb-7">
                       {project.tech.map((tech) => (
-                        <span key={tech} className="px-3 py-1 text-xs font-medium text-muted-foreground bg-gray-100/60 border border-gray-200/50 rounded-full">
+                        <motion.span 
+                          key={tech} 
+                          whileHover={{ scale: 1.08, y: -2 }}
+                          className="px-3.5 py-1.5 text-xs font-medium text-muted-foreground bg-gradient-to-br from-gray-100 to-gray-100/60 border border-gray-200/60 rounded-full transition-all duration-300 cursor-default hover:shadow-md hover:shadow-gray-200/40"
+                        >
                           {tech}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                     
-                    <div className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all cursor-pointer">
-                      <span>Learn more</span>
-                      <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    <div className="flex items-center justify-between pt-3 border-t border-white/20">
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all cursor-pointer"
+                      >
+                        <span>Learn more</span>
+                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </motion.a>
+                      <motion.a
+                        whileHover={{ scale: 1.05 }}
+                        className="flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                      >
+                        View project
+                      </motion.a>
                     </div>
                   </div>
                 </div>
@@ -306,133 +335,127 @@ export default function App() {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-6">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-4xl font-semibold text-foreground mb-3">Let's work together</h2>
+            <h2 className="text-5xl md:text-6xl font-bold text-foreground mb-4">Let's work together</h2>
             <p className="text-base text-muted-foreground max-w-2xl mx-auto">
               Have a project in mind? I'd love to hear about it and help bring your ideas to life.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-6">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/15 to-transparent rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-              <div className="relative bg-white/72 backdrop-blur-[24px] border border-white/65 rounded-[28px] p-8 lg:p-10 flex flex-col justify-between h-full hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
-                style={{
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
-                }}>
-                <div>
-                  <h3 className="text-2xl font-semibold text-foreground mb-8">Get in touch</h3>
-                  <div className="space-y-7">
-                    <div>
-                      <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2">Email</p>
-                      <p className="text-lg font-medium text-foreground">navdeep@example.com</p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="relative group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
+            <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-8 lg:p-12 hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
+              style={{
+                boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
+              }}>
+              
+              <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* Contact Info */}
+                <div className="flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-2xl font-semibold text-foreground mb-8">Get in touch</h3>
+                    <div className="space-y-8">
+                      <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
+                        <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Email</p>
+                        <p className="text-lg font-medium text-foreground">navdeep@example.com</p>
+                      </motion.div>
+                      <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
+                        <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Location</p>
+                        <p className="text-lg font-medium text-foreground">San Francisco, CA</p>
+                      </motion.div>
+                      <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
+                        <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Availability</p>
+                        <p className="text-lg font-medium text-foreground">Open for new projects</p>
+                      </motion.div>
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2">Location</p>
-                      <p className="text-lg font-medium text-foreground">San Francisco, CA</p>
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2">Availability</p>
-                      <p className="text-lg font-medium text-foreground">Open for new projects</p>
+                  </div>
+                  
+                  <div className="pt-8 border-t border-white/20">
+                    <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-4.5">Follow</p>
+                    <div className="flex gap-3">
+                      {[
+                        { icon: Github, href: "https://github.com", label: "GitHub" },
+                        { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+                        { icon: Mail, href: "mailto:navdeep@example.com", label: "Email" }
+                      ].map((social) => (
+                        <motion.a
+                          key={social.label}
+                          href={social.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          whileHover={{ scale: 1.15, y: -3 }}
+                          className="w-11 h-11 rounded-full bg-gradient-to-br from-white/60 to-white/40 border border-white/80 backdrop-blur-md flex items-center justify-center text-foreground hover:bg-white/75 hover:shadow-lg hover:border-white/90 transition-all duration-300"
+                        >
+                          <social.icon className="w-4.5 h-4.5" />
+                        </motion.a>
+                      ))}
                     </div>
                   </div>
                 </div>
-                
-                <div className="pt-8 border-t border-white/20">
-                  <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-4">Follow</p>
-                  <div className="flex gap-3">
-                    {[
-                      { icon: Github, href: "https://github.com", label: "GitHub" },
-                      { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                      { icon: Mail, href: "mailto:navdeep@example.com", label: "Email" }
-                    ].map((social) => (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="w-10 h-10 rounded-full bg-white/50 border border-white/70 backdrop-blur-md flex items-center justify-center text-foreground hover:bg-white/70 hover:shadow-md transition-all duration-300"
-                      >
-                        <social.icon className="w-4 h-4" />
-                      </motion.a>
-                    ))}
+
+                {/* Contact Form */}
+                <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-5.5 flex flex-col justify-between">
+                  <div>
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-3">Name</label>
+                      <input
+                        type="text"
+                        placeholder="Your name"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-5">Email</label>
+                      <input
+                        type="email"
+                        placeholder="you@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 font-medium"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-5">Message</label>
+                      <textarea
+                        rows={3}
+                        placeholder="Tell me about your project..."
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full px-5 py-3.5 bg-white/50 border border-white/60 backdrop-blur-md rounded-[16px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/70 focus:ring-0 focus:outline-none transition-all duration-300 resize-none font-medium"
+                      />
+                    </div>
                   </div>
-                </div>
+
+                  <motion.button
+                    whileHover={{ scale: 1.04, y: -2 }}
+                    whileTap={{ scale: 0.98 }}
+                    type="submit"
+                    className="w-full px-6 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 flex items-center justify-center gap-2 transition-all duration-300"
+                  >
+                    Send Message
+                    <Send className="w-4 h-4" />
+                  </motion.button>
+                </form>
               </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.form
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              onSubmit={(e) => { e.preventDefault(); }}
-              className="relative group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/15 to-transparent rounded-[28px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-              <div className="relative bg-white/72 backdrop-blur-[24px] border border-white/65 rounded-[28px] p-8 lg:p-10 space-y-5 hover:shadow-lg hover:shadow-black/10 transition-all duration-300"
-                style={{
-                  boxShadow: '0 20px 60px rgba(0,0,0,0.08)'
-                }}>
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2.5">Name</label>
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-5 py-3 bg-white/50 border border-white/60 backdrop-blur-md rounded-[14px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/60 focus:ring-0 focus:outline-none transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2.5">Email</label>
-                  <input
-                    type="email"
-                    placeholder="you@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-5 py-3 bg-white/50 border border-white/60 backdrop-blur-md rounded-[14px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/60 focus:ring-0 focus:outline-none transition-all duration-300"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-foreground mb-2.5">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell me about your project..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-5 py-3 bg-white/50 border border-white/60 backdrop-blur-md rounded-[14px] text-foreground placeholder-muted-foreground focus:bg-white/70 focus:border-blue-300/60 focus:ring-0 focus:outline-none transition-all duration-300 resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full px-6 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 flex items-center justify-center gap-2 group/btn transition-all duration-300 hover:-translate-y-1 mt-2"
-                >
-                  Send Message
-                  <Send className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </motion.form>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
