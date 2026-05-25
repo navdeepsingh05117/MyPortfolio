@@ -1,6 +1,8 @@
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { Code2, Zap, Sparkles, Heart, Mail, Github, Linkedin, ChevronRight, Send, ArrowUpRight } from "lucide-react";
+import smartSortImg from "../assets/projects/Smart sort Visual AI.png";
+import taskFlowImg from "../assets/projects/TaskFlow.png";
 
 export default function App() {
   const navRef = useRef(null);
@@ -45,15 +47,7 @@ export default function App() {
         </motion.nav>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen px-6 flex items-center justify-center overflow-hidden pt-8">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="absolute w-[800px] h-[600px] bg-radial-gradient from-blue-100/30 via-blue-50/10 to-transparent blur-3xl rounded-full" style={{
-            background: 'radial-gradient(circle, rgba(191,219,254,0.35) 0%, rgba(219,234,254,0.15) 40%, transparent 70%)'
-          }} />
-        </div>
-        
-        <div className="max-w-5xl mx-auto text-center relative z-10">
+      <div className="max-w-5xl mx-auto text-center relative z-10 pt-28 md:pt-32 pb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +100,6 @@ export default function App() {
             </motion.a>
           </motion.div>
         </div>
-      </section>
 
       {/* Values Section */}
       <section id="about" className="py-20 px-6">
@@ -241,82 +234,69 @@ export default function App() {
           <div className="grid lg:grid-cols-2 gap-6">
             {[
               {
-                title: "Zenith Commerce",
-                tagline: "Modern e-commerce platform",
-                description: "Full-stack solution with real-time inventory and seamless checkout",
-                tech: ["React", "Node.js", "MongoDB", "Stripe"],
-                image: "/assets/projects/zenith.png"
+                title: "Smart Sort Visual AI",
+                tagline: "Intelligent visual sorting",
+                description: "A machine-vision powered visual sorting tool",
+                tech: ["Python", "TensorFlow", "React"],
+                image: smartSortImg
               },
               {
-                title: "Nexus Workspace",
-                tagline: "Team collaboration tool",
-                description: "Real-time project management for distributed teams",
-                tech: ["Next.js", "PostgreSQL", "WebSocket"],
-                image: "/assets/projects/nexus.png"
+                title: "TaskFlow",
+                tagline: "Productivity workflow",
+                description: "A lightweight task management experience for teams",
+                tech: ["React", "TypeScript", "Node.js"],
+                image: taskFlowImg
               }
             ].map((project, index) => (
-              <motion.div
+              <motion.a
                 key={project.title}
+                href="#contact"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: index * 0.12, duration: 0.8 }}
-                whileHover={{ y: -8 }}
-                className="group relative overflow-hidden rounded-[32px]"
+                whileHover={{ y: -6 }}
+                className="group relative block overflow-hidden rounded-[32px] shadow-[0_18px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(0,0,0,0.12)]"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] overflow-hidden h-full flex flex-col hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative glass-card overflow-hidden h-full flex flex-col"
                   style={{
-                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
+                    minHeight: '590px'
                   }}>
-                  <div className="relative project-preview flex items-center justify-center overflow-hidden">
+                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[32px]">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover rounded-t-[32px]"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/1200x700?text=Project+Preview'; }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-black/6 to-transparent" />
-                    <motion.div whileHover={{ scale: 1.03 }} className="relative z-10 p-6">
-                      {/* optional overlay or mock window controls could go here */}
-                    </motion.div>
                   </div>
-                  
+
                   <div className="p-8 lg:p-9 flex-grow flex flex-col">
-                    <h3 className="text-2xl font-bold text-foreground mb-2">{project.title}</h3>
+                    <span className="glass-badge mb-4 inline-flex text-[11px] uppercase tracking-[0.3em] letter-spacing-[0.18em]">Case Study</span>
+                    <h3 className="text-2xl font-semibold text-foreground mb-2.5">{project.title}</h3>
                     <p className="text-sm font-medium text-primary mb-3">{project.tagline}</p>
-                    <p className="text-muted-foreground mb-7 text-sm leading-relaxed flex-grow">{project.description}</p>
-                    
-                    <div className="flex flex-wrap gap-2.5 mb-7">
+                    <p className="text-muted-foreground mb-6 text-sm leading-relaxed flex-grow">{project.description}</p>
+
+                    <div className="flex flex-wrap gap-2.5 mb-5">
                       {project.tech.map((tech) => (
-                        <motion.span 
-                          key={tech} 
-                          whileHover={{ scale: 1.08, y: -2 }}
-                          className="px-3.5 py-1.5 text-xs font-medium text-muted-foreground bg-gradient-to-br from-gray-100 to-gray-100/60 border border-gray-200/60 rounded-full transition-all duration-300 cursor-default hover:shadow-md hover:shadow-gray-200/40"
+                        <span
+                          key={tech}
+                          className="px-3.5 py-1.5 text-[11px] font-semibold text-muted-foreground bg-white/85 border border-slate-200 rounded-full"
                         >
                           {tech}
-                        </motion.span>
+                        </span>
                       ))}
                     </div>
-                    
+
                     <div className="flex items-center justify-between pt-3 border-t border-white/20">
-                      <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all cursor-pointer"
-                      >
-                        <span>Learn more</span>
-                        <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </motion.a>
-                      <motion.a
-                        whileHover={{ scale: 1.05 }}
-                        className="flex items-center gap-1 text-xs font-semibold text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                      >
-                        View project
-                      </motion.a>
+                      <span className="text-sm font-semibold text-primary">View Case Study</span>
+                      <ArrowUpRight className="w-4 h-4 text-primary" />
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
