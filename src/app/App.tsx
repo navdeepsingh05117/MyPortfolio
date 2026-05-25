@@ -18,32 +18,32 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <motion.nav
-        ref={navRef}
-        style={{
-          backdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`),
-          WebkitBackdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`)
-        }}
-        className="glass-nav fixed top-0 left-0 right-0 z-50"
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="nav-pill w-full flex items-center justify-between">
+      <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none">
+        <motion.nav
+          ref={navRef}
+          style={{
+            backdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`),
+            WebkitBackdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`)
+          }}
+          className="glass-nav pointer-events-auto"
+        >
+          <div className="flex items-center justify-between w-full">
             <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
             <div className="hidden md:flex items-center gap-12">
-            {["Work", "About", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
-              >
-                {item}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
-              </a>
-            ))}
+              {["Work", "About", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
+                >
+                  {item}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
+                </a>
+              ))}
             </div>
           </div>
-        </div>
-      </motion.nav>
+        </motion.nav>
+      </header>
 
       {/* Hero Section */}
       <section className="relative min-h-screen px-6 flex items-center justify-center overflow-hidden pt-8">
