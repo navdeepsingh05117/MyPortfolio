@@ -26,9 +26,10 @@ export default function App() {
         }}
         className="glass-nav fixed top-0 left-0 right-0 z-50"
       >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
-          <div className="hidden md:flex items-center gap-12">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="nav-pill w-full flex items-center justify-between">
+            <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
+            <div className="hidden md:flex items-center gap-12">
             {["Work", "About", "Contact"].map((item) => (
               <a
                 key={item}
@@ -39,6 +40,7 @@ export default function App() {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300" />
               </a>
             ))}
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -89,7 +91,7 @@ export default function App() {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
               href="#work"
-              className="px-10 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-2xl hover:shadow-blue-500/35 transition-all duration-300 text-base flex items-center gap-2"
+              className="primary-btn text-base flex items-center"
             >
               View my work
               <ArrowUpRight className="w-4 h-4" />
@@ -98,7 +100,7 @@ export default function App() {
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.98 }}
               href="#contact"
-              className="px-10 py-4 bg-white/70 border border-white/90 backdrop-blur-lg text-foreground rounded-full font-semibold hover:bg-white/85 hover:border-white hover:shadow-lg shadow-lg shadow-white/10 transition-all duration-300 text-base"
+              className="secondary-btn text-base"
             >
               Get in touch
             </motion.a>
@@ -277,7 +279,7 @@ export default function App() {
                   style={{
                     boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
                   }}>
-                  <div className="relative h-72 bg-gradient-to-br from-blue-50/80 via-purple-50/50 to-pink-50/40 flex items-center justify-center overflow-hidden">
+                  <div className="relative project-preview bg-gradient-to-br from-blue-50/80 via-purple-50/50 to-pink-50/40 flex items-center justify-center overflow-hidden">
                     <motion.div
                       whileHover={{ scale: 1.15, rotate: 5 }}
                       transition={{ duration: 0.4 }}
