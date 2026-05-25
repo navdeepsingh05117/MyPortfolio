@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "motion/react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState } from "react";
 import { Code2, Zap, Sparkles, Heart, Mail, Github, Linkedin, ChevronRight, Send, ArrowUpRight, Menu, X } from "lucide-react";
 import smartSortImg from "../assets/projects/Smart sort Visual AI.png";
@@ -29,7 +29,7 @@ export default function App() {
             backdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`),
             WebkitBackdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`)
           }}
-          className="glass-nav pointer-events-auto"
+          className="glass-nav pointer-events-auto h-14 px-4 py-2.5"
         >
           <div className="flex items-center justify-between w-full gap-3">
             <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
@@ -59,27 +59,30 @@ export default function App() {
           </div>
         </motion.nav>
 
-        {mobileNavOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.22 }}
-            className="md:hidden mx-4 mt-3 overflow-hidden rounded-[28px] border border-white/75 bg-white/90 backdrop-blur-2xl shadow-2xl"
-          >
-            <div className="flex flex-col divide-y divide-slate-200/60">
-              {navLinks.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  onClick={() => setMobileNavOpen(false)}
-                  className="px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-slate-50"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        <AnimatePresence>
+          {mobileNavOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.23, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden mx-4 mt-3 overflow-hidden rounded-[28px] border border-white/75 bg-white/90 backdrop-blur-2xl shadow-2xl"
+            >
+              <div className="flex flex-col divide-y divide-slate-200/60">
+                {navLinks.map((item) => (
+                  <a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    onClick={() => setMobileNavOpen(false)}
+                    className="px-5 py-4 text-sm font-semibold text-foreground transition hover:bg-slate-50"
+                  >
+                    {item}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <section className="min-h-[84vh] md:min-h-[92vh] flex items-center">
@@ -97,7 +100,7 @@ export default function App() {
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ delay: 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3rem,10vw,6rem)] md:text-[clamp(4.5rem,16vw,9rem)] leading-[0.95] tracking-tighter font-bold text-foreground mb-6 sm:mb-8"
+            className="text-[clamp(3.2rem,13vw,7rem)] md:text-[clamp(4.5rem,16vw,9rem)] leading-[0.92] tracking-[-0.06em] font-bold text-foreground mb-6 sm:mb-8 max-w-[22ch] mx-auto"
           >
             Navdeep Singh
           </motion.h1>
@@ -106,7 +109,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(0.98rem,2vw,1.1rem)] sm:text-[1.05rem] text-muted-foreground max-w-2xl mx-auto mb-16 leading-8 font-light"
+            className="text-[clamp(0.98rem,2vw,1.05rem)] sm:text-[1.05rem] text-muted-foreground max-w-2xl mx-auto mb-14 leading-8 font-light"
           >
             Crafting elegant digital experiences with refined motion, premium interfaces, and modern engineering
           </motion.p>
@@ -268,7 +271,7 @@ export default function App() {
             <p className="text-base text-muted-foreground">Recent work that showcases my skills and passion</p>
           </motion.div>
 
-          <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+          <div className="grid gap-5 md:grid-cols-2 md:gap-8">
             {[
               {
                 title: "Smart Sort Visual AI",
@@ -293,11 +296,11 @@ export default function App() {
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ delay: index * 0.12, duration: 0.8 }}
                 whileHover={{ y: -6 }}
-                className="group relative block overflow-hidden rounded-[32px] shadow-[0_18px_60px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(0,0,0,0.12)]"
+                className="group relative block overflow-hidden rounded-[24px] shadow-[0_18px_50px_rgba(0,0,0,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_70px_rgba(0,0,0,0.11)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative glass-card overflow-hidden h-full flex flex-col min-h-[520px] sm:min-h-[560px] lg:min-h-[590px]">
-                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[32px] h-[260px] sm:h-[300px]">
+                <div className="relative glass-card overflow-hidden h-full flex flex-col min-h-[520px] sm:min-h-[560px] lg:min-h-[590px] rounded-[24px]">
+                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[24px] aspect-[16/11] sm:h-[300px]">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
@@ -307,7 +310,7 @@ export default function App() {
                     <div className="absolute inset-0 bg-gradient-to-br from-black/6 to-transparent" />
                   </div>
 
-                  <div className="p-6 sm:p-8 lg:p-9 flex-grow flex flex-col">
+                  <div className="p-5 sm:p-7 lg:p-9 flex-grow flex flex-col">
                     <span className="glass-badge mb-4 inline-flex text-[11px] uppercase tracking-[0.3em] letter-spacing-[0.18em]">Case Study</span>
                     <h3 className="text-2xl font-semibold text-foreground mb-2.5">{project.title}</h3>
                     <p className="text-sm font-medium text-primary mb-3">{project.tagline}</p>
@@ -337,7 +340,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-6">
+      <section id="contact" className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -410,7 +413,7 @@ export default function App() {
                 </div>
 
                 {/* Contact Form */}
-                <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-5.5 flex flex-col justify-between">
+                <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-4 flex flex-col justify-between">
                   <div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-3">Name</label>
@@ -419,29 +422,29 @@ export default function App() {
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium"
+                          className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-6">Email</label>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-4">Email</label>
                       <input
                         type="email"
                         placeholder="you@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium"
+                          className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-6">Message</label>
+                      <label className="block text-sm font-semibold text-foreground mb-3 mt-4">Message</label>
                       <textarea
                         rows={3}
                         placeholder="Tell me about your project..."
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="glass-input w-full px-6 py-4 rounded-[18px] text-foreground font-medium resize-none"
+                          className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium resize-none"
                       />
                     </div>
                   </div>
@@ -450,7 +453,7 @@ export default function App() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
-                    className="w-full px-6 py-4 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 flex items-center justify-center gap-2 transition-all duration-300"
+                    className="w-full px-5 py-3 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 flex items-center justify-center gap-2 transition-all duration-300"
                   >
                     Send Message
                     <Send className="w-4 h-4" />
@@ -463,8 +466,9 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-6 border-t border-white/30 bg-white/40 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
+      <footer className="py-10 px-6 border-t border-white/30 bg-white/40 backdrop-blur-sm"
+        style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-muted-foreground">
           <p>© 2026 Navdeep Singh. All rights reserved.</p>
           <p>Designed and built with care</p>
         </div>
