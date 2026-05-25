@@ -15,10 +15,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f5f5f7] via-[#ffffff] to-[#fafafa]">
       {/* Animated Background Blobs */}
-      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-blue-100/20 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-40 floating-gradient" />
-        <div className="absolute top-1/2 right-0 w-[400px] h-[400px] bg-gradient-to-bl from-purple-100/15 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-30 floating-gradient" style={{ animationDelay: '2s' }} />
-        <div className="absolute bottom-1/4 left-1/3 w-[450px] h-[450px] bg-gradient-to-tr from-blue-50/15 to-transparent rounded-full mix-blend-screen filter blur-3xl opacity-25 floating-gradient" style={{ animationDelay: '4s' }} />
+      <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#ffffff] via-[#f8f9fa] to-[#f5f5f7]">
+        <div className="ambient-blob top-0 left-1/4 w-[600px] h-[600px] bg-blue-300 rounded-full mix-blend-multiply floating-gradient" />
+        <div className="ambient-blob top-1/3 right-0 w-[500px] h-[500px] bg-purple-200 rounded-full mix-blend-multiply floating-gradient" style={{ animationDelay: '2s' }} />
+        <div className="ambient-blob bottom-1/4 left-1/3 w-[550px] h-[550px] bg-sky-200 rounded-full mix-blend-multiply floating-gradient" style={{ animationDelay: '4s' }} />
       </div>
 
       {/* Navigation */}
@@ -29,7 +29,7 @@ export default function App() {
             backdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`),
             WebkitBackdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`)
           }}
-          className="glass-nav pointer-events-auto h-14 px-4 py-2.5"
+          className="glass-nav pointer-events-auto h-12 md:h-14 px-4 py-2"
         >
           <div className="flex items-center justify-between w-full gap-3">
             <div className="text-sm font-semibold tracking-wider text-foreground">Navdeep Singh</div>
@@ -66,7 +66,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.23, ease: [0.22, 1, 0.36, 1] }}
-              className="md:hidden mx-4 mt-3 overflow-hidden rounded-[28px] border border-white/75 bg-white/90 backdrop-blur-2xl shadow-2xl"
+              className="md:hidden mx-4 mt-3 overflow-hidden rounded-[28px] border border-black/5 bg-white/70 backdrop-blur-[32px] shadow-2xl"
             >
               <div className="flex flex-col divide-y divide-slate-200/60">
                 {navLinks.map((item) => (
@@ -85,31 +85,34 @@ export default function App() {
         </AnimatePresence>
       </header>
 
-      <section className="min-h-[84vh] md:min-h-[92vh] flex items-center">
+      <section className="min-h-[84vh] md:min-h-[92vh] flex items-center relative overflow-hidden">
+        {/* Cinematic radial glow behind hero title */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-blue-400/10 rounded-full blur-[100px] pointer-events-none opacity-50" />
+        
         <div className="max-w-5xl mx-auto text-center relative z-10 py-24 md:py-32 px-6 sm:px-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(0.65rem,3vw,0.85rem)] font-medium tracking-[0.45em] text-muted-foreground mb-8 uppercase"
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(0.65rem,3vw,0.85rem)] font-medium tracking-[0.45em] text-muted-foreground mb-6 uppercase"
           >
             Fullstack Developer & Designer
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 60, scale: 0.95 }}
+            initial={{ opacity: 0, y: 50, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(3.2rem,13vw,7rem)] md:text-[clamp(4.5rem,16vw,9rem)] leading-[0.92] tracking-[-0.06em] font-bold text-foreground mb-6 sm:mb-8 max-w-[22ch] mx-auto"
+            transition={{ delay: 0.15, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(2.8rem,12vw,7rem)] leading-[0.95] tracking-[-0.07em] font-bold text-foreground mb-6 sm:mb-8 max-w-[20ch] mx-auto"
           >
             Navdeep Singh
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="text-[clamp(0.98rem,2vw,1.05rem)] sm:text-[1.05rem] text-muted-foreground max-w-2xl mx-auto mb-14 leading-8 font-light"
+            transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="text-[clamp(1rem,2.5vw,1.15rem)] text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-light"
           >
             Crafting elegant digital experiences with refined motion, premium interfaces, and modern engineering
           </motion.p>
@@ -117,7 +120,7 @@ export default function App() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.45, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-16"
           >
             <motion.a
@@ -142,7 +145,7 @@ export default function App() {
       </section>
 
       {/* Values Section */}
-      <section id="about" className="py-20 px-6">
+      <section id="about" className="section-padding px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -171,11 +174,8 @@ export default function App() {
                 whileHover={{ y: -8 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-7 h-full flex flex-col items-start hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
-                  style={{
-                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
-                  }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-[32px] border border-black/[0.04] rounded-[32px] p-6 md:p-8 h-full flex flex-col items-start glass-card">
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     className="bg-gradient-to-br from-blue-50 to-blue-100/60 backdrop-blur-md border border-blue-200/60 rounded-full p-4 mb-5"
@@ -192,7 +192,7 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 px-6">
+      <section className="section-padding px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -232,11 +232,8 @@ export default function App() {
                 whileHover={{ y: -8 }}
                 className="group relative"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/15 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-8 h-full flex flex-col hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
-                  style={{
-                    boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
-                  }}>
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-400/10 to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
+                <div className="relative bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-[32px] border border-black/[0.04] rounded-[32px] p-6 md:p-8 h-full flex flex-col glass-card">
                   <h3 className="text-xl font-semibold text-foreground mb-4">{category.title}</h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed text-sm flex-grow">{category.description}</p>
                   <div className="flex flex-wrap gap-2.5">
@@ -258,7 +255,7 @@ export default function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="work" className="py-20 px-6">
+      <section id="work" className="section-padding px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -299,19 +296,21 @@ export default function App() {
                 className="group relative block overflow-hidden rounded-[24px] shadow-[0_18px_50px_rgba(0,0,0,0.07)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_70px_rgba(0,0,0,0.11)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-indigo-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl" />
-                <div className="relative glass-card overflow-hidden h-full flex flex-col min-h-[520px] sm:min-h-[560px] lg:min-h-[590px] rounded-[24px]">
-                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[24px] aspect-[16/11] sm:h-[300px]">
+                <div className="relative glass-card overflow-hidden h-full flex flex-col min-h-[480px] sm:min-h-[520px] lg:min-h-[560px] rounded-[24px] border-black/[0.04]">
+                  <div className="relative project-preview flex items-center justify-center overflow-hidden rounded-t-[24px] aspect-[16/12] sm:h-[320px]">
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
-                      className="absolute inset-0 w-full h-full object-cover rounded-t-[32px]"
+                      className="absolute inset-0 w-full h-full object-cover rounded-t-[24px] transition-transform duration-700 group-hover:scale-105"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/1200x700?text=Project+Preview'; }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-black/6 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
 
-                  <div className="p-5 sm:p-7 lg:p-9 flex-grow flex flex-col">
-                    <span className="glass-badge mb-4 inline-flex text-[11px] uppercase tracking-[0.3em] letter-spacing-[0.18em]">Case Study</span>
+                  <div className="p-6 md:p-8 flex-grow flex flex-col bg-white/50 backdrop-blur-md">
+                    <div className="mb-3">
+                      <span className="glass-badge inline-flex text-[10px] uppercase tracking-[0.2em]">Case Study</span>
+                    </div>
                     <h3 className="text-2xl font-semibold text-foreground mb-2.5">{project.title}</h3>
                     <p className="text-sm font-medium text-primary mb-3">{project.tagline}</p>
                     <p className="text-muted-foreground mb-6 text-sm leading-relaxed flex-grow">{project.description}</p>
@@ -340,7 +339,7 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-6">
+      <section id="contact" className="section-padding px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -362,11 +361,8 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="relative group"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
-            <div className="relative bg-gradient-to-br from-white/80 to-white/60 backdrop-blur-[24px] border border-white/70 rounded-[32px] p-8 lg:p-12 hover:border-white/85 hover:shadow-xl hover:shadow-black/8 transition-all duration-300 group-hover:bg-white/85"
-              style={{
-                boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
-              }}>
+            <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 via-transparent to-transparent rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl" />
+            <div className="relative bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-[32px] border border-black/[0.04] rounded-[32px] p-6 md:p-8 lg:p-12 glass-card">
               
               <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
                 {/* Contact Info */}
@@ -402,8 +398,8 @@ export default function App() {
                           href={social.href}
                           target="_blank"
                           rel="noreferrer"
-                          whileHover={{ scale: 1.15, y: -3 }}
-                          className="w-11 h-11 rounded-full bg-gradient-to-br from-white/60 to-white/40 border border-white/80 backdrop-blur-md flex items-center justify-center text-foreground hover:bg-white/75 hover:shadow-lg hover:border-white/90 transition-all duration-300"
+                          whileHover={{ scale: 1.1, y: -4 }}
+                          className="w-11 h-11 rounded-full bg-white/70 border border-black/5 backdrop-blur-md flex items-center justify-center text-foreground shadow-sm hover:bg-white hover:shadow-md transition-all duration-300"
                         >
                           <social.icon className="w-4.5 h-4.5" />
                         </motion.a>
@@ -466,9 +462,9 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-10 px-6 border-t border-white/30 bg-white/40 backdrop-blur-sm"
-        style={{ paddingBottom: 'calc(1rem + env(safe-area-inset-bottom))' }}>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[13px] text-muted-foreground">
+      <footer className="py-8 px-6 border-t border-black/5 bg-white/60 backdrop-blur-2xl relative z-10"
+        style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom))' }}>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-muted-foreground/80">
           <p>© 2026 Navdeep Singh. All rights reserved.</p>
           <p>Designed and built with care</p>
         </div>

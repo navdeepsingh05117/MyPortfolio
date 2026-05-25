@@ -38,8 +38,8 @@ body {
 
 .glass:hover {
   transform: translateY(-6px);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .glass-nav {
@@ -105,9 +105,9 @@ body {
 }
 
 .glass-input:focus {
-  background: #f5f5f7;
-  border-color: rgba(0, 113, 227, 0.22);
-  box-shadow: 0 0 0 6px rgba(0,113,227,0.08), 0 20px 56px rgba(0,113,227,0.06), inset 0 1px 0 rgba(255,255,255,0.98);
+  background: #ffffff;
+  border-color: rgba(0, 113, 227, 0.4);
+  box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.15), 0 20px 56px rgba(0, 113, 227, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
   outline: none;
   transform: translateY(-1px);
 }
@@ -150,11 +150,17 @@ body {
 .glass-card {
   background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.82));
   border: 1px solid rgba(255,255,255,0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 18px 60px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85);
   border-radius: 28px;
   overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,1);
 }
 
 .project-card-link {
@@ -196,9 +202,24 @@ body {
 /* Floating ambient blobs */
 .ambient-blob {
   position: absolute;
-  filter: blur(72px);
-  opacity: 0.14;
+  filter: blur(80px);
+  opacity: 0.12;
   pointer-events: none;
+}
+
+/* Global Section Spacing */
+.section-padding {
+  padding-block: 72px;
+}
+@media (min-width: 768px) {
+  .section-padding {
+    padding-block: 100px;
+  }
+}
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-block: 120px;
+  }
 }
 
 /* Gradient Animations */
