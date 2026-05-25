@@ -43,19 +43,19 @@ body {
 }
 
 .glass-nav {
-  /* Glass applied to the nav container itself */
-  width: min(1120px, calc(100% - 48px));
-  margin: 20px auto 0;
-  padding: 12px 24px;
+  /* Polished thin floating Apple navigation bar */
+  width: min(1040px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 10px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 999px;
-  background: rgba(255,255,255,0.62);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.58);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.06), inset 0 1px 1px rgba(255,255,255,0.75);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   z-index: 60;
 }
 
@@ -108,10 +108,7 @@ body {
   opacity: 0.7;
 }
 
-/* Floating pill container for navbar */
-.nav-pill {
-/* removed .nav-pill — nav element now holds the glass */
-}
+/* Floating pill container for navbar removed; nav now holds the glass */
 
 /* Primary and secondary button styles */
 .primary-btn {
