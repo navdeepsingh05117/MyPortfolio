@@ -18,7 +18,7 @@ export default function App() {
       </div>
 
       {/* Navigation */}
-      <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none">
+      <header className="fixed left-0 right-0 z-50 pointer-events-none" style={{ top: '14px' }}>
         <motion.nav
           ref={navRef}
           style={{
@@ -244,25 +244,15 @@ export default function App() {
                 title: "Zenith Commerce",
                 tagline: "Modern e-commerce platform",
                 description: "Full-stack solution with real-time inventory and seamless checkout",
-                tech: ["React", "Node.js", "MongoDB", "Stripe"]
+                tech: ["React", "Node.js", "MongoDB", "Stripe"],
+                image: "/assets/projects/zenith.png"
               },
               {
                 title: "Nexus Workspace",
                 tagline: "Team collaboration tool",
                 description: "Real-time project management for distributed teams",
-                tech: ["Next.js", "PostgreSQL", "WebSocket"]
-              },
-              {
-                title: "Pulse Analytics",
-                tagline: "Data visualization platform",
-                description: "Transform complex data into actionable insights",
-                tech: ["React", "D3.js", "Express", "Redis"]
-              },
-              {
-                title: "Nova Design System",
-                tagline: "Component library",
-                description: "Comprehensive design system for modern web apps",
-                tech: ["React", "TypeScript", "Storybook"]
+                tech: ["Next.js", "PostgreSQL", "WebSocket"],
+                image: "/assets/projects/nexus.png"
               }
             ].map((project, index) => (
               <motion.div
@@ -279,19 +269,16 @@ export default function App() {
                   style={{
                     boxShadow: '0 16px 40px rgba(0,0,0,0.06), inset 1px 1px 0 rgba(255,255,255,0.5)'
                   }}>
-                  <div className="relative project-preview bg-gradient-to-br from-blue-50/80 via-purple-50/50 to-pink-50/40 flex items-center justify-center overflow-hidden">
-                    <motion.div
-                      whileHover={{ scale: 1.15, rotate: 5 }}
-                      transition={{ duration: 0.4 }}
-                      className="relative"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-200/30 to-purple-200/20 rounded-[24px] blur-2xl" />
-                      <div className="relative bg-gradient-to-br from-white/70 to-white/50 backdrop-blur-md border border-white/85 rounded-[24px] p-6"
-                        style={{
-                          boxShadow: '0 12px 40px rgba(0,0,0,0.05), inset 1px 1px 0 rgba(255,255,255,0.6)'
-                        }}>
-                        <Code2 className="w-14 h-14 text-primary" />
-                      </div>
+                  <div className="relative project-preview flex items-center justify-center overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={`${project.title} preview`}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/1200x700?text=Project+Preview'; }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-black/6 to-transparent" />
+                    <motion.div whileHover={{ scale: 1.03 }} className="relative z-10 p-6">
+                      {/* optional overlay or mock window controls could go here */}
                     </motion.div>
                   </div>
                   
