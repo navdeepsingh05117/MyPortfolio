@@ -372,11 +372,11 @@ export default function App() {
                     <div className="space-y-8">
                       <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
                         <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Email</p>
-                        <p className="text-lg font-medium text-foreground">navdeep@example.com</p>
+                        <p className="text-lg font-medium text-foreground">navi28261@gmil.com</p>
                       </motion.div>
                       <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
                         <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Location</p>
-                        <p className="text-lg font-medium text-foreground">San Francisco, CA</p>
+                        <p className="text-lg font-medium text-foreground">Punjab, Mohali, Aerocity Block G</p>
                       </motion.div>
                       <motion.div whileHover={{ x: 4 }} className="transition-all duration-300">
                         <p className="text-xs font-semibold tracking-wider text-muted-foreground mb-2.5">Availability</p>
