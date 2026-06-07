@@ -1,11 +1,14 @@
+# Portfolio Website
 
-  # Portfolio website design
+Personal portfolio website for Navdeep Singh, built from the Portfolio website design Figma project.
 
-  This is a code bundle for Portfolio website design. The original project is available at https://www.figma.com/design/vxqoKzBP7wL9nl5eyG282T/Portfolio-website-design.
+## Contact
 
-  ## Running the code
+- Email: navi28261@gmil.com
+- Location: Punjab, Mohali, Aerocity Block G
 
-  Run `npm i` to install the dependencies.
+## Running The Code
 
-  Run `npm run dev` to start the development server.
-  
+Run `npm i` to install the dependencies.
+
+Run `npm run dev` to start the development server.

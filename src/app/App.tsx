@@ -391,7 +391,7 @@ export default function App() {
                       {[
                         { icon: Github, href: "https://github.com", label: "GitHub" },
                         { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-                        { icon: Mail, href: "mailto:navdeep@example.com", label: "Email" }
+                        { icon: Mail, href: "mailto:navi28261@gmil.com", label: "Email" }
                       ].map((social) => (
                         <motion.a
                           key={social.label}
