@@ -1,16 +1,41 @@
 import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
+import { type FormEvent, useRef, useState } from "react";
 import { Code2, Zap, Sparkles, Heart, Mail, Github, Linkedin, ChevronRight, Send, ArrowUpRight, Menu, X } from "lucide-react";
 import smartSortImg from "../assets/projects/Smart sort Visual AI.png";
 import taskFlowImg from "../assets/projects/TaskFlow.png";
+import { supabase } from "../utils/supabase";
 
 export default function App() {
   const navRef = useRef(null);
   const { scrollY } = useScroll();
   const navBlur = useTransform(scrollY, [0, 100], [0, 32]);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const navLinks = ["Work", "About", "Contact"];
+
+  const handleContactSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitStatus("sending");
+    setSubmitMessage("");
+
+    const { error } = await supabase.from("contact_messages").insert({
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      message: formData.message.trim(),
+    });
+
+    if (error) {
+      setSubmitStatus("error");
+      setSubmitMessage(error.message);
+      return;
+    }
+
+    setFormData({ name: "", email: "", message: "" });
+    setSubmitStatus("success");
+    setSubmitMessage("Message sent successfully.");
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#f5f5f7] via-[#ffffff] to-[#fafafa]">
@@ -409,13 +434,14 @@ export default function App() {
                 </div>
 
                 {/* Contact Form */}
-                <form onSubmit={(e) => { e.preventDefault(); }} className="space-y-4 flex flex-col justify-between">
+                <form onSubmit={handleContactSubmit} className="space-y-4 flex flex-col justify-between">
                   <div>
                     <div>
                       <label className="block text-sm font-semibold text-foreground mb-3">Name</label>
                       <input
                         type="text"
                         placeholder="Your name"
+                        required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
@@ -427,6 +453,7 @@ export default function App() {
                       <input
                         type="email"
                         placeholder="you@example.com"
+                        required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
@@ -438,6 +465,7 @@ export default function App() {
                       <textarea
                         rows={3}
                         placeholder="Tell me about your project..."
+                        required
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                           className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium resize-none"
@@ -449,11 +477,18 @@ export default function App() {
                     whileHover={{ scale: 1.04, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
+                    disabled={submitStatus === "sending"}
                     className="w-full px-5 py-3 bg-gradient-to-r from-[#0071e3] to-[#0066cc] text-white rounded-full font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 flex items-center justify-center gap-2 transition-all duration-300"
                   >
-                    Send Message
+                    {submitStatus === "sending" ? "Sending..." : "Send Message"}
                     <Send className="w-4 h-4" />
                   </motion.button>
+                  {submitStatus === "success" && (
+                    <p className="text-sm font-medium text-emerald-600">{submitMessage}</p>
+                  )}
+                  {submitStatus === "error" && (
+                    <p className="text-sm font-medium text-red-600">{submitMessage || "Could not send message. Please try again."}</p>
+                  )}
                 </form>
               </div>
             </div>

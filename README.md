@@ -1,4 +1,4 @@
-# Portfolio Website
+# Navdeep Singh Portfolio
 
 Personal portfolio website for Navdeep Singh, built from the Portfolio website design Figma project.
 
