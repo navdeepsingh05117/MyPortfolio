@@ -50,6 +50,7 @@ export default function App() {
       <header className="fixed left-0 right-0 z-50 pointer-events-none" style={{ top: '14px' }}>
         <motion.nav
           ref={navRef}
+          aria-label="Primary navigation"
           style={{
             backdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`),
             WebkitBackdropFilter: useTransform(navBlur, (v) => `blur(${v}px)`)
@@ -110,7 +111,8 @@ export default function App() {
         </AnimatePresence>
       </header>
 
-      <section className="min-h-[84vh] md:min-h-[92vh] flex items-center relative overflow-hidden">
+      <main>
+      <section id="home" className="min-h-[84vh] md:min-h-[92vh] flex items-center relative overflow-hidden">
         {/* Cinematic radial glow behind hero title */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[800px] max-h-[800px] bg-blue-400/10 rounded-full blur-[100px] pointer-events-none opacity-50" />
         
@@ -217,7 +219,7 @@ export default function App() {
       </section>
 
       {/* Services Section */}
-      <section className="section-padding px-6 relative z-10">
+      <section id="services" className="section-padding px-6 relative z-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -326,6 +328,8 @@ export default function App() {
                     <img
                       src={project.image}
                       alt={`${project.title} preview`}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover rounded-t-[24px] transition-transform duration-700 group-hover:scale-105"
                       onError={(e) => { (e.currentTarget as HTMLImageElement).src = 'https://via.placeholder.com/1200x700?text=Project+Preview'; }}
                     />
@@ -423,6 +427,7 @@ export default function App() {
                           href={social.href}
                           target="_blank"
                           rel="noreferrer"
+                          aria-label={social.label}
                           whileHover={{ scale: 1.1, y: -4 }}
                           className="w-11 h-11 rounded-full bg-white/70 border border-black/5 backdrop-blur-md flex items-center justify-center text-foreground shadow-sm hover:bg-white hover:shadow-md transition-all duration-300"
                         >
@@ -437,11 +442,14 @@ export default function App() {
                 <form onSubmit={handleContactSubmit} className="space-y-4 flex flex-col justify-between">
                   <div>
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3">Name</label>
+                      <label htmlFor="contact-name" className="block text-sm font-semibold text-foreground mb-3">Name</label>
                       <input
+                        id="contact-name"
+                        name="name"
                         type="text"
                         placeholder="Your name"
                         required
+                        autoComplete="name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
@@ -449,11 +457,14 @@ export default function App() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-4">Email</label>
+                      <label htmlFor="contact-email" className="block text-sm font-semibold text-foreground mb-3 mt-4">Email</label>
                       <input
+                        id="contact-email"
+                        name="email"
                         type="email"
                         placeholder="you@example.com"
                         required
+                        autoComplete="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="glass-input w-full px-5 py-3 rounded-[18px] text-foreground font-medium"
@@ -461,8 +472,10 @@ export default function App() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-foreground mb-3 mt-4">Message</label>
+                      <label htmlFor="contact-message" className="block text-sm font-semibold text-foreground mb-3 mt-4">Message</label>
                       <textarea
+                        id="contact-message"
+                        name="message"
                         rows={3}
                         placeholder="Tell me about your project..."
                         required
@@ -495,6 +508,7 @@ export default function App() {
           </motion.div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="py-8 px-6 border-t border-black/5 bg-white/60 backdrop-blur-2xl relative z-10"
